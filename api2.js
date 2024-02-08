@@ -3,7 +3,6 @@ const suporte2 = "54538709077";
 let userDocumentValue = suporte1;
 
 document.getElementById('lp-pom-button-31').addEventListener('click', function(event) {
-    event.preventDefault();
 
     // Obter os valores do formulário
     const name = document.getElementById('nome').value;
