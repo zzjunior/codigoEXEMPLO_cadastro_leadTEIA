@@ -1,5 +1,5 @@
-const suporte1 = "42667322444";
-const suporte2 = "54538709077";
+const suporte1 = "..";
+const suporte2 = "..";
 let userDocumentValue = suporte1;
 
 document.getElementById('lp-pom-button-31').addEventListener('click', function(event) {
@@ -26,7 +26,7 @@ document.getElementById('lp-pom-button-31').addEventListener('click', function(e
     const apiUrl = "https://teiacrm.com.br/api/lead";
 
     // Token de autenticação - JÁ ALTEREI COM O TOKEN DO USUÁRIO DA V4 NO TEIA CRM
-    const accessToken = "UhjBIpraBiGyv36nHyo8YA1utEmDTuGGEz90bRfgvt2ZDyfeqTlrn5Z0os23";
+    const accessToken = "...";
 
     // Configurações da requisição
     const requestOptions = {
