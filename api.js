@@ -9,6 +9,8 @@ document.getElementById('enviar').addEventListener('click', function(event) {
     const number = document.getElementById('telefone').value;
     const email = document.getElementById('seu_melhor_email_').value;
     const TokenTEIA = document.getElementById('token').value;
+    const sourceTEIA = document.getElementById('source').value;
+    const storeTEIA = document.getElementById('store').value;
 
     // Dados do formulário
     const formData = {
@@ -16,8 +18,9 @@ document.getElementById('enviar').addEventListener('click', function(event) {
         phone: number, // NÚMERO DO LEAD
         email: email, // EMAIL DO LEAD
         product_id: 35, // AQUI O "ID" DO PRODUTO
-        source_id: 3316, // FONTE DE ORIGEM (Você precisa definir o valor correto)
+        source_id: sourceTEIA, // FONTE DE ORIGEM (Você precisa definir o valor correto)
         //user_document: userDocumentValue, // CPF DO USUÁRIO À RECEBER O LEAD
+        store_id: storeTEIA, // LOJA DE ORIGEM (Você precisa definir o valor correto)
         comment: "...TESTE DEU CERTO! :D" // COMENTÁRIO OPCIONAL
     };
 
