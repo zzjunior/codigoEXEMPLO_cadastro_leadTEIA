@@ -10,10 +10,24 @@ document.getElementById('enviar').addEventListener('click', function(event) {
     const storeTEIA = document.getElementById('store').value;
     const comentario = document.getElementById('comentario').value;
     const tags = document.getElementById('tags').value;
+    const parametrosExtras = document.getElementById('parametros_extras').value;
+    
     // CORRIGIR TAGS PRA FICAREM NO FORMATO ACEITO NA API tags= [ "tag1", "tag2", "tag3"]
     let processedTags = [];
     if (tags.trim()) {
         processedTags = tags.split(',').map(tag => tag.trim()).filter(tag => tag);
+    }
+
+    // Processar parâmetros extras
+    let extraParams = {};
+    if (parametrosExtras.trim()) {
+        try {
+            extraParams = JSON.parse(parametrosExtras);
+        } catch (error) {
+            console.error('Erro ao processar parâmetros extras:', error);
+            document.getElementById('retorno-api').innerText = 'Erro: Parâmetros extras devem estar em formato JSON válido';
+            return;
+        }
     }
 
     // Dados do formulário
@@ -26,7 +40,8 @@ document.getElementById('enviar').addEventListener('click', function(event) {
         //user_document: userDocumentValue, // CPF DO USUÁRIO À RECEBER O LEAD
         store_id: storeTEIA, // LOJA DE ORIGEM
         comment: comentario, // COMENTÁRIO OPCIONAL
-        tags: processedTags // TAGS OPCIONAIS NO FORMATO CORRETO
+        tags: processedTags, // TAGS OPCIONAIS NO FORMATO CORRETO
+        ...extraParams // PARÂMETROS EXTRAS ADICIONADOS DINAMICAMENTE
 
     };
 
