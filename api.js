@@ -8,6 +8,13 @@ document.getElementById('enviar').addEventListener('click', function(event) {
     const TokenTEIA = document.getElementById('token').value;
     const sourceTEIA = document.getElementById('source').value;
     const storeTEIA = document.getElementById('store').value;
+    const comentario = document.getElementById('comentario').value;
+    const tags = document.getElementById('tags').value;
+    // CORRIGIR TAGS PRA FICAREM NO FORMATO ACEITO NA API tags= [ "tag1", "tag2", "tag3"]
+    let processedTags = [];
+    if (tags.trim()) {
+        processedTags = tags.split(',').map(tag => tag.trim()).filter(tag => tag);
+    }
 
     // Dados do formulário
     const formData = {
@@ -15,10 +22,12 @@ document.getElementById('enviar').addEventListener('click', function(event) {
         phone: number, // NÚMERO DO LEAD
         email: email, // EMAIL DO LEAD
         product_id: 35, // AQUI O "ID" DO PRODUTO
-        source_id: sourceTEIA, // FONTE DE ORIGEM (Você precisa definir o valor correto)
+        source_id: sourceTEIA, // FONTE DE ORIGEM
         //user_document: userDocumentValue, // CPF DO USUÁRIO À RECEBER O LEAD
-        store_id: storeTEIA, // LOJA DE ORIGEM (Você precisa definir o valor correto)
-        comment: "Lead enviado do EXEMPLO Cadastro via API TEIA CRM <a href='https://zzjunior.github.io/codigoEXEMPLO_cadastro_leadTEIA/'>https://zzjunior.github.io/codigoEXEMPLO_cadastro_leadTEIA/</a>" // COMENTÁRIO OPCIONAL
+        store_id: storeTEIA, // LOJA DE ORIGEM
+        comment: comentario, // COMENTÁRIO OPCIONAL
+        tags: processedTags // TAGS OPCIONAIS NO FORMATO CORRETO
+
     };
 
     // URL da API
